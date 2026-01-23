@@ -162,7 +162,7 @@ alex.backward()
 num_circles = 7
 rainbow_colors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red"]
 radius = 50
-radius_increase = 15
+radius_increase = 8.5
 alex.clear()
 alex.pensize(9)
 alex.left(90)

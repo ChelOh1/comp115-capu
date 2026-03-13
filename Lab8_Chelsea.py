@@ -249,7 +249,7 @@ def word_frequency(paragraph):
     Returns:
     -(dict): Dictionary mapping each word to its frequency count.
     """
-    words = re.findall(r'\b\w+\b', paragraph.lower())
+    words = re.findall(r'\b\w+\b', paragraph)
     word_dict = {}
     
     for word in words:
@@ -260,7 +260,7 @@ def word_frequency(paragraph):
     return word_dict
 
 # Your unit tests
-print (word_frequency("I am alive. I am happy."))
+print (word_frequency("I do not like water. I like fruits."))
 assert word_frequency("I am alive. I am happy.") == {'i': 2, 'am': 2, 'alive': 1, 'happy': 1}
 assert word_frequency("I do not like water. I like fruits.") == {'i': 2, 'do': 1, 'not': 1, 'like': 2, 'water': 1, 'fruits': 1}
 
@@ -268,52 +268,52 @@ assert word_frequency("I do not like water. I like fruits.") == {'i': 2, 'do': 1
 
 
 """
-# Real-world Coding Question (optional): Extract Repository IDs and Names from GitHub API Data
+# # Real-world Coding Question (optional): Extract Repository IDs and Names from GitHub API Data
 
-# The GitHub API allows you to search for repositories using different criteria. 
-# The following code sends a request to GitHub to find Python repositories with more than 300,000 stars.
+# # The GitHub API allows you to search for repositories using different criteria. 
+# # The following code sends a request to GitHub to find Python repositories with more than 300,000 stars.
 
-# The API response is converted into a Python dictionary called response_dict. 
-# Inside this dictionary, the key "items" contains a list of repository dictionaries,
-# where each repository includes information such as id, name, stars, and more.
+# # The API response is converted into a Python dictionary called response_dict. 
+# # Inside this dictionary, the key "items" contains a list of repository dictionaries,
+# # where each repository includes information such as id, name, stars, and more.
+# # """
+
+# import requests
+
+# url = "https://api.github.com/search/repositories?q=language:python+sort:stars+stars:>300000"
+# # You can copy and paste the url into your browser to view the data.
+
+# headers = {"Accept": "application/vnd.github.v3+json"}
+# response = requests.get(url, headers=headers)
+
+# # print(f"Status Code: {response.status_code}") 
+# # HTTP response status code 200 means The server processed the request and returned the requested data successfully.
+
+# response_dict = response.json() # Convert the response object to a dictionary
+
+
+# """
+# Task: Write a function called id_name_repo_starred_300k(response_dict) that
+# takes response_dict as its parameter, 
+# traverses the list stored under the "items" key,
+# returns a dictionary containing all repository id → name pairs.
+
+# Ensure that your function passes the unit test provided below.
 # """
 
-import requests
+# # Save the repositories' id: name as a pair in a dict, and print them out.
+# def id_name_repo_starred_300k(response_dict):
+#     pass
 
-url = "https://api.github.com/search/repositories?q=language:python+sort:stars+stars:>300000"
-# You can copy and paste the url into your browser to view the data.
-
-headers = {"Accept": "application/vnd.github.v3+json"}
-response = requests.get(url, headers=headers)
-
-# print(f"Status Code: {response.status_code}") 
-# HTTP response status code 200 means The server processed the request and returned the requested data successfully.
-
-response_dict = response.json() # Convert the response object to a dictionary
+# # assert id_name_repo_starred_300k(response_dict) == {
+# #     13491895: 'free-programming-books',
+# #     54346799: 'public-apis',
+# #     83222441: 'system-design-primer'
+# #     }
 
 
-"""
-Task: Write a function called id_name_repo_starred_300k(response_dict) that
-takes response_dict as its parameter, 
-traverses the list stored under the "items" key,
-returns a dictionary containing all repository id → name pairs.
+# """
+# Congratulations on finishing your lab8. Hope you feel more comfortable now on the data type set and dict.
 
-Ensure that your function passes the unit test provided below.
-"""
-
-# Save the repositories' id: name as a pair in a dict, and print them out.
-def id_name_repo_starred_300k(response_dict):
-    pass
-
-# assert id_name_repo_starred_300k(response_dict) == {
-#     13491895: 'free-programming-books',
-#     54346799: 'public-apis',
-#     83222441: 'system-design-primer'
-#     }
-
-
-"""
-Congratulations on finishing your lab8. Hope you feel more comfortable now on the data type set and dict.
-
-You just need to upload this lab to your GitHub repository, and copy the link to e-learn. That's all.
-"""
+# You just need to upload this lab to your GitHub repository, and copy the link to e-learn. That's all.
+# """

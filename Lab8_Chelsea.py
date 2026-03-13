@@ -260,7 +260,6 @@ def word_frequency(paragraph):
     return word_dict
 
 # Your unit tests
-print (word_frequency("I do not like water. I like fruits."))
 assert word_frequency("I am alive. I am happy.") == {'i': 2, 'am': 2, 'alive': 1, 'happy': 1}
 assert word_frequency("I do not like water. I like fruits.") == {'i': 2, 'do': 1, 'not': 1, 'like': 2, 'water': 1, 'fruits': 1}
 

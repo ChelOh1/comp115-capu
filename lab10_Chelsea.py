@@ -109,7 +109,7 @@ def create_palette_more_pixels(width, height):
     im.save("palette_more_pixels.png")
 
 # Uncomment the following line to call the function. Observe the generated imag.
-# create_palette_more_pixels(250, 250)
+create_palette_more_pixels(250, 250)
     
 """
 Exercise 1 - Dim the image palette_more_pixels.png (20 marks)
@@ -136,14 +136,13 @@ def dim_eight_pixels_image():
     for row in range(im.height):
         for col in range(im.width):
             (r, g, b) = im.getpixel((col, row))
-            #
-            #
-            #
+            r = r // 2
+            g = g // 2
+            b = b // 2
             im_dim.putpixel((col, row), (r, g, b))
     im_dim.save("img1_palette_dim.png")
 
-
-#dim_eight_pixels_image()
+dim_eight_pixels_image()
 
 
 """
@@ -163,19 +162,23 @@ def blue_washed_image():
     im = Image.open("rick_and_morty.png")
     im_blue = Image.new("RGB", [im.width, im.height])
     # Complete the code here
+    for row in range(im.height):
+        for col in range(im.width):
+            (r, g, b) = im.getpixel((col, row))
+            im_blue.putpixel((col, row), (0, 0, b))
 
     im_blue.save("img2_rick_blue_washed.png")
 
 
-#blue_washed_image()
+blue_washed_image()
 
 # Uncomment the following 4 lines of code, and run it, 
 # which generated rick_changing.gif file. 
 # You can open the gif to see it. Do you like it?
-# img1 = Image.open("rick_and_morty.png")
-# img2 = Image.open("img2_rick_blue_washed.png")
-# frames = [img1, img2]  # Save into a GIF file that loops forever
-# frames[0].save('rick_changing.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0)
+img1 = Image.open("rick_and_morty.png")
+img2 = Image.open("img2_rick_blue_washed.png")
+frames = [img1, img2]  # Save into a GIF file that loops forever
+frames[0].save('rick_changing.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0)
 
 
 """
@@ -201,13 +204,12 @@ def create_alternate_lines(width, height):
     for row in range(height):
         for col in range(width):
             if row % 2 == 0:
-                pass # Complete code here
+                im.putpixel((col, row), (255, 255, 255)) # Complete code here
             else:
-                pass # Complete code here
+                im.putpixel((col, row), (0, 0, 0)) # Complete code here
     im.save("img3_alternate_lines.png")
 
-
-#create_alternate_lines(100, 120)
+create_alternate_lines(100, 120)
     
 """
 Exercise 4 - Create a randome noise image (20 marks)
@@ -229,10 +231,15 @@ def create_random_noise(width, height):
     """
     im = Image.new("RGB", (width, height))
     # Complete code here
-
+    for row in range(height):
+        for col in range(width):
+            if random.random() < 0.5:
+                im.putpixel((col, row), (255, 255, 255))
+            else:
+                im.putpixel((col, row), (0, 0, 0))
     im.save("img4_random.png")
 
-#create_random_noise(150, 150)
+create_random_noise(150, 150)
     
 """
 Exercise 5 - Decode an image (20 marks)
@@ -259,11 +266,16 @@ def decode_image():
     im = Image.open("rick_encoded.png")
     im_secret = Image.new("RGB", [im.width, im.height])
     # Complete code here
-
+    for row in range(im.height):
+        for col in range(im.width):
+            (r, g, b) = im.getpixel((col, row))
+            if r % 2 == 1:
+                im_secret.putpixel((col, row), (0, 0, 0))
+            else:
+                im_secret.putpixel((col, row), (255, 0, 0))
     im_secret.save("img5_rick_secret.png")
 
-
-#decode_image()
+decode_image()
     
 # Congratulations! Hope you had fun with lab10.
 # Upload it to your github account, and copy the link to e-learn. That's all.
